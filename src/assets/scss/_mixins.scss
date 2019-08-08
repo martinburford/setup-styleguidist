@@ -1,0 +1,25 @@
+// RESPONSIVE OVERRIDES
+// The ability to provide custom media queries, either in line with grid breakpoints, or bespoke
+@mixin breakpoint-specific($settings) {
+  @if map-has-key($breakpoints, $settings) {
+    @media all and #{map-get($breakpoints, $settings)} {
+      @content;
+    }
+  } @else {
+    $query: '';
+
+    @if (map-has-key($settings, min-width)) {
+      $media-min: map-get($settings, min-width);
+      $query: $query + unquote(' and (min-width: #{$media-min})');
+    }
+
+    @if (map-has-key($settings, max-width)) {
+      $media-max: map-get($settings, max-width);
+      $query: $query+unquote(' and (max-width: #{$media-max})');
+    }
+
+    @media all #{$query} {
+      @content;
+    }
+  }
+}

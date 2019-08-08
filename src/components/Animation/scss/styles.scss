@@ -1,0 +1,76 @@
+/* Settings */
+
+.settings {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  width: 300px;
+
+  tr {
+      &:nth-child(odd) {
+          background: #f6f6f6;
+      }
+
+      &:nth-child(even) {
+          background: #efefef;
+      }
+  }
+
+  th,
+  td {
+      border-top: 1px solid #dedede;
+      box-sizing: border-box;
+      padding: 5px;
+      width: 50%;
+  }
+
+  button {
+      padding: 5px;
+      width: 100%;
+  }
+}
+
+/* Lottie */
+
+.lottie {
+    overflow-x: auto;
+}
+
+/* Debug logger */
+
+.log-check {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  z-index: 2;
+
+  label {
+      cursor: pointer;
+      margin-right: 10px;
+  }
+}
+
+.log {
+  background: #fff;
+  border: 1px solid #efefef;
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  right: 20px;
+  top: 65px;
+
+  &.visible {
+      display: block;
+  }
+
+  li {
+      box-sizing: border-box;
+      padding: 10px;
+
+      &:nth-child(odd) {
+          background: #f6f6f6;
+      }
+  }
+}

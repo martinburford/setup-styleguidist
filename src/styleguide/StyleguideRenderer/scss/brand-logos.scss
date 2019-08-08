@@ -1,0 +1,75 @@
+/* Brand logos */
+
+.brand-logos {
+  @include brandStyle('background', 'medium');
+  @include reset;
+  // border-radius: 8px;
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+  display: none;
+  padding: 5px;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  z-index: 3;
+
+  @include breakpointSpecific('mobile-large-upwards') {
+    display: block;
+  }
+
+  @include breakpointSpecific('desktop-upwards') {
+    padding: 10px;
+    top: 10px;
+  }
+
+  @include breakpointSpecific('widescreen') {
+    right: 20px;
+    top: 20px;
+  }
+
+  &__brand {
+    cursor: pointer;
+    display: block;
+    margin-left: 5px;
+
+    @include breakpointSpecific('mobile-large-upwards') {
+      margin-left: 0;
+      margin-top: 5px;
+    }
+
+    @include breakpointSpecific('desktop-upwards') {
+      margin-top: 10px;
+    }
+
+    &:first-of-type {
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+
+  &__image {
+    // border-radius: 8px;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+    display: block;
+    height: 48px;
+    opacity: 0.35;
+    transition: $transition ease-in-out;
+    width: 48px;
+    will-change: opacity;
+
+    @include breakpointSpecific('desktop-upwards') {
+      height: 64px;
+      width: 64px;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+// Loop through all brands
+@each $brand in $brandNames {
+  .#{$brand} .brand-logos__brand--#{$brand} .brand-logos__image {
+    opacity: 1;
+  }
+}

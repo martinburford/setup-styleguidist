@@ -1,0 +1,94 @@
+/* Utilities */
+
+// @mixin mapDeepGet
+// Retrieve nested map values
+// @param {Map} $map - The map to retrieve the key/value from
+// @param {Arglist} $keys - The key chain to parse
+// @param {*} - The value for the desired map key
+@function mapDeepGet($map, $keys...){
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+// @mixin brandStyle
+// Attach brand-specific styles to elements
+// @param {String} $cssProperty - The property to attach a style to
+// @param {String} $key - The colour variant to use ('light' || 'medium' || 'dark'
+// @param {Arglist} $additionalProps - Any additional properties to co-exist alongside the property being created
+@mixin brandStyle($cssProperty, $key, $additionalProps: ()) {
+  // Loop through all brands
+  @each $brandMap in $themes {
+    @each $brand in $brandMap {
+      @if type-of($brand) != map {
+        // Process any additional props
+        $props: ();
+
+        // Retrieve the property requested for the current brand
+        $color: mapDeepGet($themes, $brand, $key);
+
+        @if type-of($additionalProps) == 'list' {
+          @each $prop in $additionalProps {
+              $props: join($props, $prop, space);
+          }
+        }
+
+        // Set the specified property
+        .#{$brand} & {
+          #{$cssProperty}: join($color, $props, space);
+          transition: #{$cssProperty} $transition ease-in-out;
+          will-change: #{$cssProperty};
+        }
+      }
+    }
+  }
+}
+
+// @mixin breakpointSpecific
+// The ability to provide custom media queries, either in line with grid breakpoints, or bespoke
+// @param {string} - The breakpoint name which resides within _variables.scss/{$breakpoints}
+// @param {map (number)} $settings.min-width - The minimum width bracket to execute a subset of styles against
+// @param {map (number)} $settings.max-width - The maximum width bracket to execute a subset of styles against
+@mixin breakpointSpecific($settings) {
+    @if map-has-key($breakpoints, $settings) {
+        @media all and #{map-get($breakpoints, $settings)} {
+            @content;
+        }
+    } @else {
+        $query: '';
+
+        @if (map-has-key($settings, min-width)) {
+            $media-min: map-get($settings, min-width);
+            $query: $query + unquote(' and (min-width: #{$media-min})');
+        }
+
+        @if (map-has-key($settings, max-width)) {
+            $media-max: map-get($settings, max-width);
+            $query: $query + unquote(' and (max-width: #{$media-max})');
+        }
+
+        @media all #{$query} {
+            @content;
+        }
+    }
+}
+
+// @mixin reset
+// Reset all necessary styles for a given element
+@mixin reset {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  display: inline;
+  font: inherit;
+  font-size: 100%;
+  line-height: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: auto;
+}

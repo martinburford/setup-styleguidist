@@ -1,0 +1,31 @@
+/* Palette */
+
+$brandNames: ('bos','halifax','lloyds','mbna');
+
+$bosDark: #283266;
+$halifaxDark: #0d2966;
+$lloydsDark: #00402e;
+$mbnaDark: #0b2849;
+
+$themes: (
+  bos: (
+    dark: $bosDark,
+    medium: lighten($bosDark, 55%),
+    light: lighten($bosDark, 65%)
+  ),
+  halifax: (
+    dark: $halifaxDark,
+    medium: lighten($halifaxDark, 60%),
+    light: lighten($halifaxDark, 70%)
+  ),
+  lloyds: (
+    dark: $lloydsDark,
+    medium: lighten($lloydsDark, 15%),
+    light: lighten($lloydsDark, 84%)
+  ),
+  mbna: (
+    dark: $mbnaDark,
+    medium: lighten($mbnaDark, 67%),
+    light: lighten($mbnaDark, 76%)
+  )
+)

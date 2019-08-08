@@ -1,0 +1,36 @@
+@import './utilities';
+@import './palette';
+@import './variables';
+
+// Component styles
+@import './brand-logos';
+@import './sidebar';
+
+.sg-root {
+  @include brandStyle('background', 'light');
+  padding: 20px 0;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  font-family: 'tahoma';
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+
+  @include breakpointSpecific('mobile-large-upwards') {
+    margin-left: 0;
+    padding-right: 0; 
+    width: calc(100% - 90px);
+  }
+
+  @include breakpointSpecific('desktop-upwards') {
+    margin-left: 250px;
+    width: calc(100% - 365px);
+  }
+
+  @include breakpointSpecific('widescreen') {
+    margin-left: 270px;
+    width: calc(100% - 415px);
+  }
+}

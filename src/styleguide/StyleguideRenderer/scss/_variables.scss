@@ -1,0 +1,20 @@
+/* Variables */
+
+$brandDark: mapDeepGget($themes, 'mbna', 'dark');
+$brandMedium: mapDeepGet($themes, 'mbna', 'medium');
+$brandLight: mapDeepGet($themes, 'mbna', 'light');
+
+$transition: 350ms;
+
+// Responsive breakpoints
+$mobileLarge: 450;
+$tablet: 768;
+$desktop: 1025;
+$widescreen: 1334;
+
+$breakpoints: (
+  mobile-large-upwards: '(min-width: #{$mobileLarge}px)',
+  tablet-upwards: '(min-width: #{$tablet}px)',
+  desktop-upwards: '(min-width: #{$desktop}px)',
+  widescreen: '(min-width: #{$widescreen}px)',
+)

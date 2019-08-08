@@ -1,0 +1,62 @@
+/* Sidebar */
+
+$linkColorOnDarkBg: #fff;
+$linkColorOnLightBg: #333;
+
+.sidebar {
+  @include brandStyle('background', 'medium');
+  box-shadow: 2px 0 5px -2px #ccc;
+  box-sizing: border-box;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  z-index: 2;
+
+  @include breakpointSpecific('desktop-upwards') {
+    display: block;
+  }
+
+  &__intro {
+    @include brandStyle('background', 'dark');
+    border-bottom: 1px solid rgba(#fff, 0.2);
+    box-sizing: border-box;
+    color: #fff;
+    padding: 10px;
+  }
+
+  nav {
+    height: calc(100% - 50px);
+    left: 0;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+  }
+
+  [class^="rsg--search"] {
+    @include brandStyle('background', 'dark');
+    border-bottom: 1px solid rgba(#fff, 0.2);
+  }
+
+  /* Component link (anchor) */
+  /* Links are styled globally within Styleguidist config, hence the more specific override here, only working for the sidebar */
+  a[class^="rsg--"] {
+    @include brandStyle('background', 'medium');
+    border-bottom: 1px solid rgba(#fff, 0.2);
+    color: $linkColorOnLightBg;
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+
+    .lloyds & {
+      color: $linkColorOnDarkBg;
+    }
+
+    &:hover {
+      @include brandStyle('background', 'dark');
+      color: #fff;
+    }
+  }
+}
