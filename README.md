@@ -25,7 +25,7 @@ sections: [
 The purpose of this is so that component **PropType** definitions can be parsed, and summarized as part of the styleguidist output. In doing this, it provides a single place whereby a component can be seen running in situ, alongside the props that that given component expects to receive. Because of this, libraries such as Styleguidist are considered an incredibly useful tool for projects which include multiple teams, often where front-end and back-end development may be separated. It provides a platform for the front-end Developers to provide details of how the **contracts** of a specific component are expected to work. A typical output of a components prop type breakdown that Styleguidist can render is shown below:
 
 | Prop name             | Type      | Default   | Description                                                                                                           |
-| --------------------- | :-------- | --------- | --------------------------------------------------------------------------------------------------------------------- |
+| :-------------------- | :-------: | :-------: | --------------------------------------------------------------------------------------------------------------------- |
 | attemptsRemaining     | number    | -1        | How many attempts are remaining?                                                                                      |
 | debugOptions          | shape[]   | []        | Any debug options                                                                                                     |
 | errorMessage          | string    | ""        | The radio button error message                                                                                        |
